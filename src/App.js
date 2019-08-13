@@ -18,6 +18,8 @@ const App = () => {
     };
 
     setItems(prevItems => [...prevItems, newItem]);
+
+    e.target.reset();
   }
 
   return (
