@@ -1,15 +1,12 @@
 import React from 'react';
 import './ListItem.css';
-import danAbramovImage from '../../../assets/images/danabramov.jpg';
 
-const ListItem = () => (
+const ListItem = ({ name, description, image }) => (
   <li className="listItem__wrapper">
-    <img className="listItem__image" src={danAbramovImage} alt="Dan Abramov" />
+    <img className="listItem__image" src={image} alt="Dan Abramov" />
     <div>
-      <h2 className="listItem__name">Dan Abramov</h2>
-      <p className="listItem__description">
-        Working on @reactjs. The demo guy.
-      </p>
+      <h2 className="listItem__name">{name}</h2>
+      <p className="listItem__description">{description}</p>
       <button className="listItem__button">visit twitter page</button>
     </div>
   </li>
