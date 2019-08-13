@@ -1,12 +1,11 @@
 import React from 'react';
 import ListItem from './ListItem/ListItem';
 import './ListWrapper.css';
-import { twitterAccounts } from '../../data/twitterAccounts';
 import uuidv1 from 'uuid/v1';
 
-const ListWrapper = () => (
+const ListWrapper = ({ items }) => (
   <ul className="listWrapper__wrapper">
-    {twitterAccounts.map(item => (
+    {items.map(item => (
       <ListItem
         key={uuidv1()}
         {...item}
