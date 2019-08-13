@@ -1,5 +1,6 @@
 import React from 'react';
+import './ListItem.css';
 
-const ListItem = () => <li>item1</li>;
+const ListItem = () => <li className="listItemWrapper">item1</li>;
 
 export default ListItem;
