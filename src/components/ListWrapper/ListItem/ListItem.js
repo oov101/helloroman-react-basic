@@ -3,7 +3,7 @@ import './ListItem.css';
 import danAbramovImage from '../../../assets/images/danabramov.jpg';
 
 const ListItem = () => (
-  <li className="listItemWrapper">
+  <li className="listItem__wrapper">
     <img src={danAbramovImage} alt="Dan Abramov" />
     <h2>Dan Abramov</h2>
     <p>Working on @reactjs. The demo guy.</p>
