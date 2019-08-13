@@ -9,6 +9,15 @@ const App = () => {
 
   const addItem = (e) => {
     e.preventDefault();
+
+    const newItem = {
+      name: e.target[0].value,
+      twitterLink: e.target[1].value,
+      image: e.target[2].value,
+      description: e.target[3].value
+    };
+
+    setItems(prevItems => [...prevItems, newItem]);
   }
 
   return (
