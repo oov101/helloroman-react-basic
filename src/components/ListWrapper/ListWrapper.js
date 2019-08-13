@@ -1,8 +1,9 @@
 import React from 'react';
 import ListItem from './ListItem/ListItem';
+import './ListWrapper.css';
 
 const ListWrapper = () => (
-  <ul>
+  <ul className="listWrapper__wrapper">
     <ListItem />
   </ul>
 );
