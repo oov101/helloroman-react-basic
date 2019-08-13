@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import ListWrapper from './components/ListWrapper/ListWrapper';
 
 const App = () => (
-  <div>
-    <h1>Hello World!</h1>
-  </div>
+  <>
+    <ListWrapper />
+  </>
 );
 
 export default App;
