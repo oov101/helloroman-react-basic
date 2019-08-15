@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Form.module.scss';
+import Input from '../Input/Input';
 
 const Form = ({ submitFn }) => (
   <div className={styles.wrapper}>
@@ -9,50 +10,10 @@ const Form = ({ submitFn }) => (
       className={styles.form}
       onSubmit={submitFn}
     >
-      <div className={styles.item}>
-        <input
-          required
-          className={styles.input}
-          type="text"
-          name="name"
-          id="name" placeholder=" " maxLength="30"
-        />
-        <label className={styles.label} htmlFor="name">Name</label>
-        <div className={styles.itemBar}></div>
-      </div>
-      <div className={styles.item}>
-        <input
-          required
-          className={styles.input}
-          type="text"
-          name="link"
-          id="link" placeholder=" "
-        />
-        <label className={styles.label} htmlFor="link">Link</label>
-        <div className={styles.itemBar}></div>
-      </div>
-      <div className={styles.item}>
-        <input
-          className={styles.input}
-          type="text"
-          name="image"
-          id="image"
-          placeholder=" "
-        />
-        <label className={styles.label} htmlFor="image">Image</label>
-        <div className={styles.itemBar}></div>
-      </div>
-      <div className={styles.item}>
-        <textarea
-          required
-          className={styles.textarea}
-          name="description"
-          id="description"
-          placeholder=" "
-        />
-        <label className={styles.label} htmlFor="description">Description</label>
-        <div className={styles.itemBar}></div>
-      </div>
+      <Input name="name" label="Name" maxLength={30} />
+      <Input name="link" label="Twitter Link" />
+      <Input name="image" label="Image" />
+      <Input tag="textarea" name="description" label="Description" />
       <button
         className={styles.button}
         type="submit"
