@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Form.module.scss';
+import Button from '../Button/Button';
 import Input from '../Input/Input';
 
 const Form = ({ submitFn }) => (
@@ -14,12 +15,7 @@ const Form = ({ submitFn }) => (
       <Input name="link" label="Twitter Link" />
       <Input name="image" label="Image" />
       <Input tag="textarea" name="description" label="Description" />
-      <button
-        className={styles.button}
-        type="submit"
-      >
-        add new item
-      </button>
+      <Button>add new item</Button>
     </form>
   </div>
 );
