@@ -28,7 +28,8 @@
   .imageNone {
     @extend .image;
 
-    background: lightgrey;
+    background: url('https://image.flaticon.com/icons/svg/17/17004.svg') no-repeat;
+    background-size: cover;
   }
 
   .name {

@@ -5,6 +5,7 @@ const Form = ({ submitFn }) => (
   <div className={styles.wrapper}>
     <h2 className={styles.h2}>Add new twitter account</h2>
     <form
+      autoComplete="off"
       className={styles.form}
       onSubmit={submitFn}
     >
