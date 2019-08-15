@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ListWrapper from './components/ListWrapper/ListWrapper';
-import Form from './components/Form/Form';
-import './index.css';
+import ListWrapper from '../../components/List/List';
+import Form from '../../components/Form/Form';
+import '../../index.css';
 import uuidv1 from 'uuid/v1';
 
 const initialState = [
@@ -35,7 +35,7 @@ const initialState = [
   },
 ];
 
-const App = () => {
+const Root = () => {
   const [items, setItems] = useState(initialState);
 
   const addItem = (e) => {
@@ -62,4 +62,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default Root;
