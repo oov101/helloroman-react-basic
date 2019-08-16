@@ -42,7 +42,7 @@ const initialState = [
 
 const Root = () => {
   const [items, setItems] = useState(initialState);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const addItem = (e) => {
     e.preventDefault();
