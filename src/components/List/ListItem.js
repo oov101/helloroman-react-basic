@@ -4,7 +4,7 @@ import styles from './ListItem.module.scss';
 import Button from '../Button/Button';
 import Title from '../Title/Title';
 
-const ListItem = ({ title, description, image, link }) => {
+const ListItem = ({ type, title, description, image, link }) => {
   const ImageTag = image ? 'img' : 'div';
 
   return (
@@ -13,7 +13,7 @@ const ListItem = ({ title, description, image, link }) => {
       <div>
         <Title>{title}</Title>
         <p className={styles.description}>{description}</p>
-        {link && <Button href={link}>visit twitter page</Button>}
+        {link && <Button href={link}>visit {type} page</Button>}
       </div>
     </li>
   );
