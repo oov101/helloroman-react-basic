@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import ListWrapper from '../../components/List/List';
-import Form from '../../components/Form/Form';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import '../../index.css';
 import uuidv1 from 'uuid/v1';
+
+import ArticlesView from '../ArticlesView/ArticlesView';
+import Header from '../../components/Header/Header';
+import Modal from '../../components/Modal/Modal';
+import NotesView from '../NotesView/NotesView';
+import TwittersView from '../TwittersView/TwittersView';
 
 const initialState = [
   {
@@ -37,6 +42,7 @@ const initialState = [
 
 const Root = () => {
   const [items, setItems] = useState(initialState);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const addItem = (e) => {
     e.preventDefault();
@@ -54,11 +60,24 @@ const Root = () => {
     e.target.reset();
   }
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div>
-      <ListWrapper items={items} />
-      <Form submitFn={addItem} />
-    </div>
+    <BrowserRouter>
+      <Header openModalFn={openModal} />
+      <Switch>
+        <Route exact path="/" component={TwittersView} />
+        <Route path="/articles" component={ArticlesView} />
+        <Route path="/notes" component={NotesView} />
+      </Switch>
+      {isModalOpen && <Modal closeModalFn={closeModal} />}
+    </BrowserRouter>
   );
 }
 
