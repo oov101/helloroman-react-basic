@@ -4,31 +4,31 @@ import styles from './ListItem.module.scss';
 import Button from '../Button/Button';
 import Title from '../Title/Title';
 
-const ListItem = ({ name, description, image, twitterLink }) => {
+const ListItem = ({ title, description, image, link }) => {
   const ImageTag = image ? 'img' : 'div';
 
   return (
     <li className={styles.wrapper}>
-      <ImageTag className={image ? styles.image : styles.imageNone} src={image} alt={name} />
+      {image && <ImageTag className={image ? styles.image : styles.imageNone} src={image} alt={title} />}
       <div>
-        <Title>{name}</Title>
+        <Title>{title}</Title>
         <p className={styles.description}>{description}</p>
-        <Button href={twitterLink}>visit twitter page</Button>
+        {link && <Button href={link}>visit twitter page</Button>}
       </div>
     </li>
   );
 };
 
 ListItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   image: PropTypes.string,
-  twitterLink: PropTypes.string.isRequired
+  link: PropTypes.string
 }
 
 ListItem.defaultProps = {
-  description: 'One of the React creator',
-  image: null
+  image: null,
+  link: null
 }
 
 export default ListItem;

@@ -22,8 +22,8 @@ const Root = () => {
     const newItem = {
       key: uuidv1(),
       type: item.type,
-      name: item.title,
-      twitterLink: item.link,
+      title: item.title,
+      link: item.link,
       image: item.image,
       description: item.description
     };
