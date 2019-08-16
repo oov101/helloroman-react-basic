@@ -19,61 +19,101 @@ const descriptions = {
 };
 
 const Form = () => {
-  const [activeOption, setActiveOption] = useState(types.twitter);
+  const [type, setType] = useState(types.twitter);
+  const [title, setTitle] = useState('');
+  const [link, setLink] = useState('');
+  const [image, setImage] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleInputChange = e => {
+    switch (e.target.name) {
+      case 'title':
+        setTitle(e.target.value);
+        break;
+      case 'link':
+        setLink(e.target.value);
+        break;
+      case 'image':
+        setImage(e.target.value);
+        break;
+      case 'description':
+        setDescription(e.target.value);
+        break;
+      default:
+        console.error(e.target.name);
+        console.error('There is not handler for ' + e.target.name + ' input.')
+        break;
+    }
+  };
 
   const handleRadioButtonChange = type => {
-    setActiveOption(type);
+    setType(type);
   };
 
   return (
     <AppContext.Consumer>
       {(context) => (
         <div className={styles.wrapper}>
-          <Title>Add new {descriptions[activeOption]}</Title>
+          <Title>Add new {descriptions[type]}</Title>
           <form
             autoComplete="off"
             className={styles.form}
-            onSubmit={context.addItem}
+            onSubmit={e => context.addItem(e, { type, title, link, image, description })}
           >
             <div className={styles.formOptions}>
               <Radio
                 id={types.twitter}
-                checked={activeOption === types.twitter}
+                checked={type === types.twitter}
                 changeFn={() => handleRadioButtonChange(types.twitter)}
               >
                 Twitter
                 </Radio>
               <Radio
                 id={types.article}
-                checked={activeOption === types.article}
+                checked={type === types.article}
                 changeFn={() => handleRadioButtonChange(types.article)}
               >
                 Article
                 </Radio>
               <Radio
                 id={types.note}
-                checked={activeOption === types.note}
+                checked={type === types.note}
                 changeFn={() => handleRadioButtonChange(types.note)}
               >
                 Note
                 </Radio>
             </div>
             <Input
-              name="name"
-              label={activeOption === types.twitter ? 'Twitter Name' : 'Title'}
+              onChange={handleInputChange}
+              value={title}
+              name="title"
+              label={type === types.twitter ? 'Twitter Name' : 'Title'}
               maxLength={30}
             />
-            {activeOption !== types.note ? (
+            {type !== types.note ? (
               <Input
+                onChange={handleInputChange}
+                value={link}
                 name="link"
-                label={activeOption === types.twitter ? 'Twitter Link' : 'Link'}
+                label={type === types.twitter ? 'Twitter Link' : 'Link'}
               />
             ) : null}
 
-            {activeOption === types.twitter ? (
-              <Input name="image" label="Image" />
+            {type === types.twitter ? (
+              <Input
+                onChange={handleInputChange}
+                value={image}
+                name="image"
+                label="Image"
+              />
             ) : null}
-            <Input tag="textarea" name="description" label="Description" />
+            <Input
+              onChange={handleInputChange}
+              value={description}
+              tag="textarea"
+              name="description"
+              label="Description"
+            />
             <Button>add new item</Button>
           </form>
         </div>

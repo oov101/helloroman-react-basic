@@ -11,27 +11,38 @@ import NotesView from '../NotesView/NotesView';
 import TwittersView from '../TwittersView/TwittersView';
 
 const Root = () => {
-  const [items, setItems] = useState({
-    twitters: [],
-    articles: [],
-    notes: []
-  });
+  const [twitters, setTwitters] = useState([]);
+  const [articles, setArticles] = useState([]);
+  const [notes, setNotes] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(true);
 
-  const addItem = (e) => {
+  const addItem = (e, item) => {
     e.preventDefault();
 
     const newItem = {
       key: uuidv1(),
-      name: e.target[0].value,
-      twitterLink: e.target[1].value,
-      image: e.target[2].value,
-      description: e.target[3].value
+      type: item.type,
+      name: item.title,
+      twitterLink: item.link,
+      image: item.image,
+      description: item.description
     };
 
-    setItems(prevItems => [...prevItems, newItem]);
+    switch (item.type) {
+      case 'twitter':
+        setTwitters(prevTwitters => [...prevTwitters, newItem]);
+        break;
+      case 'article':
+        setArticles(prevArticles => [...prevArticles, newItem]);
+        break;
+      case 'note':
+        setNotes(prevNotes => [...prevNotes, newItem]);
+        break;
+      default:
+        console.error(`There is not type of ${item.type}!`);
+    }
 
-    e.target.reset();
+    closeModal();
   }
 
   const openModal = () => {
@@ -44,7 +55,7 @@ const Root = () => {
 
   return (
     <BrowserRouter>
-      <AppContext.Provider value={{ items, addItem }}>
+      <AppContext.Provider value={{ twitters, articles, notes, addItem }}>
         <Header openModalFn={openModal} />
         <Switch>
           <Route exact path="/" component={TwittersView} />
